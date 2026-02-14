@@ -1,0 +1,9 @@
+{
+  "output_root": "../.skill-runs/ai-news-radio",
+  "retention_days": 30,
+  "notes": [
+    "output_root is relative to ai-news-radio/",
+    "You can override with AI_NEWS_RADIO_OUTPUT_ROOT environment variable",
+    "Runtime outputs are not part of the skill package"
+  ]
+}

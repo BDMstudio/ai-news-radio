@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI News Radio Podcast Script",
+  "description": "Alex & Jamie dual-person podcast script for Volcano TTS",
+  "type": "object",
+  "required": ["podcast_id", "script", "metadata"],
+  "properties": {
+    "podcast_id": {
+      "type": "string",
+      "description": "Timestamp-based ID: YYYYMMDD_HHmmss",
+      "pattern": "^\\d{8}_\\d{6}$"
+    },
+    "digest_ref": {
+      "type": "string",
+      "description": "Relative path to the digest.md that generated this script"
+    },
+    "script": {
+      "type": "array",
+      "description": "Ordered list of dialogue turns",
+      "minItems": 25,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "required": ["speaker", "text", "emotion"],
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "enum": ["Alex", "Jamie"],
+            "description": "Alex = host (zh_male_dayixiansheng), Jamie = expert (zh_female_mizaitongxue)"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 2,
+            "description": "Dialogue text in Chinese. Max 300 characters per turn."
+          },
+          "emotion": {
+            "type": "string",
+            "enum": [
+              "neutral",
+              "curious",
+              "excited",
+              "skeptical",
+              "concerned",
+              "optimistic",
+              "serious",
+              "thoughtful",
+              "amused",
+              "surprised",
+              "cautionary"
+            ],
+            "description": "Emotion tag for TTS prosody control"
+          },
+          "segment": {
+            "type": "string",
+            "enum": ["opening", "headlines", "deep_dive", "quick_news", "closing"],
+            "description": "Which segment this turn belongs to"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["topic_tags", "deep_dive_title"],
+      "properties": {
+        "topic_tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Topic tags for this episode"
+        },
+        "deep_dive_title": {
+          "type": "string",
+          "description": "Title of the Deep Dive article"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
+              "source": { "type": "string" }
+            }
+          },
+          "description": "Source articles referenced in this episode"
+        },
+        "estimated_duration_min": {
+          "type": "number",
+          "minimum": 3,
+          "maximum": 10,
+          "description": "Estimated audio duration in minutes"
+        },
+        "round_count": {
+          "type": "integer",
+          "description": "Total number of dialogue turns"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of script generation"
+        },
+        "deep_dive_type": {
+          "type": "string",
+          "enum": ["research", "product_launch", "trend_opinion", "model_release", "tech_validation"],
+          "description": "Type of Deep Dive analysis framework used"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

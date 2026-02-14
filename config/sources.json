@@ -1,0 +1,188 @@
+{
+  "version": "2026-02-13",
+  "source_of_truth": "docs/mcp_feasibility_report.md",
+  "track_a": [
+    {
+      "name": "Google DeepMind",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "arXiv AI",
+      "url": "https://rss.arxiv.org/rss/cs.AI",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/feed/",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active",
+      "filters": {
+        "category_includes": [
+          "AI",
+          "Artificial intelligence"
+        ]
+      }
+    },
+    {
+      "name": "Berkeley AI Research (BAIR)",
+      "url": "https://bair.berkeley.edu/blog/feed.xml",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "Import AI (Jack Clark)",
+      "url": "https://importai.substack.com/feed",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "degraded",
+      "fallback": {
+        "type": "tavily_search",
+        "query": "site:openai.com/news"
+      }
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "Meta AI Blog",
+      "url": "https://ai.meta.com/blog/rss.xml",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "NVIDIA Blog",
+      "url": "https://feeds.feedburner.com/nvidiablog",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "Microsoft Research",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "Apple ML Research",
+      "url": "https://machinelearning.apple.com/rss.xml",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    },
+    {
+      "name": "AWS Machine Learning Blog",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "type": "rss",
+      "auto_pool_within_hours": 48,
+      "status": "active"
+    }
+  ],
+  "track_b": [
+    {
+      "name": "Hacker News AI",
+      "url": "https://hnrss.org/newest?q=AI+OR+LLM+OR+ChatGPT&points=50",
+      "type": "rss",
+      "thresholds": {
+        "hn_points_gte": 50
+      },
+      "engagement_fields": [
+        "hn_points",
+        "hn_comments"
+      ],
+      "status": "active"
+    },
+    {
+      "name": "HF Daily Papers",
+      "url": "https://papers.takara.ai/api/feed",
+      "type": "rss",
+      "thresholds": {
+        "top_n": 3
+      },
+      "status": "active"
+    },
+    {
+      "name": "Tavily Search",
+      "type": "search",
+      "thresholds": {
+        "tavily_score_gte": 0.75
+      },
+      "queries": [
+        "new AI model release benchmark 2026",
+        "AI 新模型发布 能力评测 2026",
+        "new AI application launch product release 2026",
+        "AI commercial deployment enterprise case study ROI 2026",
+        "AI技术路线验证 商业落地 实际应用 2026",
+        "LLM inference cost pricing update 2026",
+        "GitHub trending AI repositories today"
+      ],
+      "engagement_fields": [
+        "tavily_score"
+      ],
+      "status": "active"
+    }
+  ],
+  "optional_extensions": [
+    {
+      "name": "Stanford HAI",
+      "type": "web_extract",
+      "method": "page_crawl_or_extract",
+      "enabled": false
+    },
+    {
+      "name": "The Batch (DeepLearning.AI)",
+      "type": "newsletter",
+      "method": "mail_parse_or_web_extract",
+      "enabled": false
+    },
+    {
+      "name": "Stratechery",
+      "url": "https://stratechery.com/feed/",
+      "type": "rss",
+      "enabled": false
+    },
+    {
+      "name": "Lenny's Newsletter",
+      "url": "https://www.lennysnewsletter.com/feed",
+      "type": "rss",
+      "enabled": false
+    },
+    {
+      "name": "The Rundown AI",
+      "type": "newsletter",
+      "method": "mail_parse_or_web_extract",
+      "enabled": false
+    },
+    {
+      "name": "Morning Brew",
+      "type": "newsletter",
+      "method": "mail_parse",
+      "enabled": false
+    },
+    {
+      "name": "SemiAnalysis",
+      "url": "https://www.semianalysis.com/feed",
+      "type": "rss",
+      "enabled": false
+    }
+  ]
+}
